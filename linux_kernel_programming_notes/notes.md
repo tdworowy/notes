@@ -76,3 +76,8 @@ sudo bash -c "echo Y > /sys/module/printk/parameters/ignore_loglevel" <- include
 sudo bash -c "echo -n 'file *usb +p' > /sys/kernel/debug/dynamic_debug/control" <- nable all debug messages in all files where pathname includes string "usb" (turn it ff with -p) 
 sudo bash -c "echo -n 'file *ip* +p' > /sys/kernel/debug/dynamic_debug/control"
  ```
+
+ ```bash
+modinfo -p <path to .ko file> <- display kernel module parameters
+ls /sys/module/<module name>/parameters <- each file corresponds to a parameter
+ ```
