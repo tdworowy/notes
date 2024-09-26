@@ -77,7 +77,21 @@ sudo bash -c "echo -n 'file *usb +p' > /sys/kernel/debug/dynamic_debug/control" 
 sudo bash -c "echo -n 'file *ip* +p' > /sys/kernel/debug/dynamic_debug/control"
  ```
 
- ```bash
+```bash
 modinfo -p <path to .ko file> <- display kernel module parameters
 ls /sys/module/<module name>/parameters <- each file corresponds to a parameter
  ```
+
+get process kernel stack
+```bash
+sudo cat /proc/<pid>/stack
+```
+ 
+get process user stack
+```bash
+sudo gdb \
+ -ex "set pagination 0" \
+ -ex "thread apply all bt" \
+ --batch -p <pid>
+```
+ 
